@@ -385,7 +385,8 @@ async function getResponsesTag(data, objResponses) {
         if (swaggerResponses[idx].split(new RegExp(`\\[\\s*\\t*\\s*\\t*${statusCode}\\s*\\t*\\s*\\t*\\]\\s*\\t*\\s*\\t*\\=\\s*\\t*\\s*\\t*\\{`)).length > 1) {
             // has object
             let objResp = await utils.stack0SymbolRecognizer(swaggerResponses[idx], '{', '}');
-
+            objResp = objResp.replaceAll('__¬¬¬__', '"');
+            
             try {
                 // Handling syntax error
                 objResp = {
